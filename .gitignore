@@ -13,6 +13,10 @@ Thumbs.db
 /*.txt
 /wp-admin
 /wp-includes
+/wp-content/languages/
+/wp-content/uploads/
+/wp-content/upgrade/
 /wp-content/themes/twentytwentyone
 /wp-content/themes/twentytwentytwo
-/wp-content/plugins/*.php
+/wp-content/plugins/*
+!/wp-content/plugins/MyScheduler/
