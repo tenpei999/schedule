@@ -7,18 +7,30 @@
 
   const startDate = new Date("1900-01-1");
   const endDate = new Date("2100-12-31");
+  const yearList = new Array();
+  const monthList = new Array();
   const dateList = new Array();
-  const dayname = ['日','月','火','水','木','金','土'];
+  const dayname = ['日', '月', '火', '水', '木', '金', '土'];
   const sat = dayname[6];
 
   for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-    let formatedDate = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日' + '[' + dayname[d.getDay()] + ']';
-
+    let formatedYear = d.getFullYear() + '年' ;
+    let formatMonth = (d.getMonth() + 1) + '月' ;
+    let formatedDate = d.getDate() + '日' + '[' + dayname[d.getDay()] + ']';
+    yearList.push(formatedYear);
+    monthList.push(formatMonth);
     dateList.push(formatedDate);
+
+    if(formatedYear === '2001年') {
+      if(formatMonth === '3月') {
+        console.log(formatedDate)
+      }
+    }
   }
 
-  console.log(dateList[70000]);
-  
+
+
+
 
 
   registerBlockType('my-plugin/custom-block', {
