@@ -40,7 +40,7 @@ function create_myScheduler_html() {
 function my_custom_block_enqueue_assets() {
   wp_enqueue_script(
       'my-custom-block-editor',
-      plugins_url('my-custom-block.js', __FILE__),
+      plugins_url('my-converted-block.js', __FILE__),
       array('wp-blocks', 'wp-element')
   );
 }
