@@ -6,58 +6,29 @@ registerBlockType('gutenberg-examples/example-dynamic', {
   icon: 'smiley',
   category: 'common',
   edit: function BlockEdit() {
-    // "<h1>Hello World</h1>"を出力するJSXを返す
-    d = new Date;
-    const startDate = new Date("1900-01-1");
-    const endDate = new Date("2100-12-31");
-    const yearList = new Array();
-    const monthList = new Array();
-    const dateList = new Array();
-    const dayname = ['日', '月', '火', '水', '木', '金', '土'];
-    const sat = dayname[6];
-    const editor = document.querySelector('.editor-styles-wrapper.block-editor-writing-flow');
-    const div = document.createElement('div');
-    editor.appendChild(div);
-    div.classList.add('carender');
-    div.style.display = 'flex';
 
-    for (let d = startDate; d <= endDate; d.setDate(d.getDate() + 1)) {
-      let formatedYear = d.getFullYear() + '年';
-      let formatedMonth = (d.getMonth() + 1) + '月';
-      let formatedDate = d.getDate();
-      let formatedDateAsDay = '[' + dayname[d.getDay()] + ']';
-      yearList.push(formatedYear);
-      monthList.push(formatedMonth);
-      dateList.push(formatedDate);
+    const editor = document.querySelector('.editor-styles-wrapper.block-editor-writing-flow')
+    const parent = document.createElement('div');
+    parent.classList.add('carender');
+    const days = document.createElement('ul');
+    days.classList.add('days');
+    days.style.listStyle = 'none';
+    days.style.display = 'flex';
+    const aWeek = 7;
+    const daysLength = 31;
 
-
-      if (formatedYear === '2023年') {
-        if (formatedMonth === '8月') {
-          const box = document.createElement('div');
-          box.textContent = formatedDate;
-          div.appendChild(box);
-
-          const dateAsDay = document.createElement('p');
-          dateAsDay.textContent = formatedDateAsDay;
-          dateAsDay.style.display = 'none';
-
-          box.appendChild(dateAsDay);
-          console.log(formatedDate);
-          // if(box.includes(dayname[6])) {
-          //   const br = document.createElement('br');
-          //   box.after(br) ;
-          // }
-        }
-      }
+    editor.appendChild(parent);
+    parent.appendChild(days);
+    
+    for (let i = 1; i < daysLength; i++) {
+      const li = document.createElement('li');
+      li.classList.add('day');
+      li.textContent = i;
+      days.appendChild(li);
+      if((i % 7) == 0 ) {
+        const br = document.createElement('br');
+        days.insertBefore(br,li);
+      }  
     }
-
-    // return (
-    //   <div>
-    //     <h1>{sat}</h1>
-    //     {
-    //       console.log("hoge")
-    //     }
-    //   </div>
-    // );
   },
 });
