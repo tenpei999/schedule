@@ -25,7 +25,7 @@ registerBlockType('gutenberg-examples/example-dynamic', {
       let formatedYear = d.getFullYear() + '年';
       let formatedMonth = (d.getMonth() + 1) + '月';
       let formatedDate = d.getDate();
-      let formatedDateAsDay = d.getDate() + '日' + '[' + dayname[d.getDay()] + ']';
+      let formatedDateAsDay = '[' + dayname[d.getDay()] + ']';
       yearList.push(formatedYear);
       monthList.push(formatedMonth);
       dateList.push(formatedDate);
@@ -36,7 +36,17 @@ registerBlockType('gutenberg-examples/example-dynamic', {
           const box = document.createElement('div');
           box.textContent = formatedDate;
           div.appendChild(box);
+
+          const dateAsDay = document.createElement('p');
+          dateAsDay.textContent = formatedDateAsDay;
+          dateAsDay.style.display = 'none';
+
+          box.appendChild(dateAsDay);
           console.log(formatedDate);
+          // if(box.includes(dayname[6])) {
+          //   const br = document.createElement('br');
+          //   box.after(br) ;
+          // }
         }
       }
     }
